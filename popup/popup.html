@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPlace AutoBOT</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="../icons/icon32.png" alt="AutoBOT" class="header-icon">
+                <h1>WPlace AutoBOT</h1>
+            </div>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Ready</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="script-section">
+                <h3>Available Scripts</h3>
+                <div class="scripts-list" id="scriptsList">
+                    <!-- Scripts will be populated here -->
+                </div>
+            </div>
+
+            <div class="account-section">
+                <div class="section-header">
+                    <h4>Account Manager</h4>
+                    <div class="header-actions">
+                        <button class="btn btn-primary btn-small" id="refreshAccountBtn" title="Add Current Account">
+                            <span class="icon">🔄</span>
+                            Refresh
+                        </button>
+                        <button class="btn btn-primary btn-small" id="addAccountBtn" title="Add Account Manually">
+                            <span class="icon">➕</span>
+                            Add
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="accounts-container" id="accountsContainer">
+                    <div class="account-placeholder" id="accountPlaceholder">
+                        <span class="placeholder-icon">👤</span>
+                        <span class="placeholder-text">No accounts saved</span>
+                        <span class="placeholder-subtext">Click "Refresh" to add current account</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Account Modal -->
+            <div class="modal-overlay" id="addAccountModal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Add Account Manually</h4>
+                        <button class="modal-close" id="closeModalBtn">✕</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="accountName">Account Name</label>
+                            <input type="text" id="accountName" placeholder="Enter account name" maxlength="50">
+                        </div>
+                        <div class="form-group">
+                            <label for="accountToken">Token (Cookie Value)</label>
+                            <textarea id="accountToken" placeholder="Paste authentication token here" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="saveAccountBtn">
+                            <span class="icon">💾</span>
+                            Save Account
+                        </button>
+                        <button class="btn btn-secondary" id="cancelAccountBtn">
+                            <span class="icon">✕</span>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Modal -->
+            <div class="modal-overlay" id="settingsModal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Settings</h4>
+                        <button class="modal-close" id="closeSettingsBtn">✕</button>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Startup Script</h3>
+                        <p style="font-size: 8px; color: #888; margin-bottom: 10px;">Select a script to run automatically when visiting wplace.live</p>
+                        <select id="startupScriptSelect" class="settings-select">
+                            <option value="">None</option>
+                            <!-- Scripts will be populated here -->
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" id="closeSettingsModalBtn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-info">
+                <span>v2.0.1</span>
+                <a href="#" id="settingsBtn">Settings</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "WPlace AutoBOT Script Launcher",
+  "version": "2.0.0",
+  "description": "Launch and manage automation scripts for WPlace",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png",
+    "256": "icons/icon256.png"
+  },
+  "permissions": [
+    "cookies",
+    "webRequest",
+    "scripting",
+    "tabs",
+    "storage",
+    "browsingData",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://backend.wplace.live/*",
+    "https://wplace.live/*",
+    "https://*.wplace.live/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "WPlace AutoBOT",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "64": "icons/icon64.png",
+      "128": "icons/icon128.png",
+      "256": "icons/icon256.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://wplace.live/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "scripts/*.js",
+        "Script-manager.js",
+        "Script-manager-fixed.js",
+        "auto-image-styles.css",
+        "themes/*.css",
+        "lang/*.json",
+        "lang/lang/*.json",
+        "icons/*.png"
+      ],
+      "matches": ["https://wplace.live/*"]
+    }
+  ]
+}
+
+
